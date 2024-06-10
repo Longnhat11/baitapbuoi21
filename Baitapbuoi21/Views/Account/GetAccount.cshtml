@@ -1,0 +1,25 @@
+﻿ <script>
+    function LoadData() {
+
+        var param = {
+
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: "Account/GetAccount",
+            data: param,
+            async: true,
+            dataType: "html",
+            // dataType:"json",
+            success: function (rs) {
+                $("#Test_PartialView").html("");
+                $("#Test_PartialView").html(rs);
+            },
+            error(rs) {
+                console.log(JSON.stringify(rs));
+            }
+        });
+    }
+
+ </script>

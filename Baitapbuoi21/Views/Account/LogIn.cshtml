@@ -1,0 +1,33 @@
+﻿@model DataAccess.DTO.Accounts
+
+<h2>Login</h2>
+
+<form method="post">
+    <div>
+        <label for="UserName">UserName:</label>
+        <input type="text" id="UserName" name="UserName" required />
+    </div>
+    <div>
+        <label for="Password">Password:</label>
+        <input type="password" id="Password" name="Password" required />
+    </div>
+    <button type="submit">Login</button>
+</form>
+<script>
+    $("#loginForm").submit(function (event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: '/Account/LogIn',
+            type: 'POST',
+            data: $(this).serialize(),
+            success: function (data) {
+                if (data.success) {
+                    location.reload();
+                } else {
+                    alert(data.message);
+                }
+            }
+        });
+    });
+</script>
